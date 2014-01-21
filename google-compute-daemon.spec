@@ -56,10 +56,16 @@ cp README.md %{buildroot}%{_defaultdocdir}/%{name}
 %clean
 
 %post
+%systemd_post google-accounts-manager.service
+%systemd_post google-address-manager.service
 
 %preun
+%systemd_preun google-accounts-manager.service
+%systemd_preun google-address-manager.service
 
 %postun
+%systemd_postun_with_restart google-accounts-manager.service
+%systemd_postun_with_restart google-address-manager.service
 
 
 %files
